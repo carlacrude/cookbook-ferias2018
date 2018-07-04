@@ -11,4 +11,8 @@
   </ul>
 <% end %>
 
+<% @cuisines.each do |c| %>
+  <%= link_to(c.name, c)%>
+<% end %>
+
 <%=link_to "Enviar uma receita", new_recipe_path%>
