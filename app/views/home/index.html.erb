@@ -15,4 +15,8 @@
   <%= link_to(c.name, c)%>
 <% end %>
 
+<% @recipe_types.each do |recipe_type| %>
+  <%= link_to recipe_type.name, recipe_type %>
+<% end %>
+
 <%=link_to "Enviar uma receita", new_recipe_path%>
