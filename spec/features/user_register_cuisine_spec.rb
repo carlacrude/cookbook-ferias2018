@@ -29,5 +29,4 @@ feature 'User register cuisine' do
    
     expect(page).to have_content('Esta cozinha já foi cadastrada')
   end
-
 end
