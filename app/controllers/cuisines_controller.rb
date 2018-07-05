@@ -12,7 +12,7 @@ class CuisinesController < ApplicationController
   def create
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
-      redirect_to cuisine_path(@cuisine.id)
+        redirect_to cuisine_path(@cuisine.id)
     else
       render :new
     end
