@@ -1,3 +1,5 @@
+<h1><%= flash[:notice] %></h1>
+
 <h1><%= @recipe.title %></h1>
 
 <h3>Detalhes</h3>
@@ -12,4 +14,5 @@
 <h3>Como Preparar</h3>
 <p><%= @recipe.cook_method %></p>
 
+<%= link_to 'Editar', edit_recipe_path(@recipe.id) %>
 <%= link_to 'Voltar', root_path %>
