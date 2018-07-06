@@ -30,10 +30,17 @@ class RecipesController < ApplicationController
   end
 
   def update
-    recipe = Recipe.find(params[:id])
-    recipe.update(recipe_params)
-    flash[:notice] = 'Suas alterações foram salvas com sucesso!'
-    redirect_to recipe_path(recipe.id)
+    @recipe = Recipe.find(params[:id])
+    
+    if @recipe.update(recipe_params) 
+      flash[:notice] = 'Suas alterações foram salvas com sucesso!'
+      redirect_to recipe_path(@recipe.id)
+    else
+      @cuisines = Cuisine.all
+      @recipe_types = RecipeType.all
+      flash[:alert] = 'Você deve informar todos os dados da receita'
+      render :edit
+    end
   end
 
   private

@@ -41,7 +41,22 @@ feature 'User edit recipe' do
   scenario 'and must fill in title' do
     cuisine = Cuisine.create(name: 'Francesa')
     recipe_type = RecipeType.create(name: 'Prato principal')
-    recipe = Recipe.create(title: 'Pipoquê', )
-  end
+    recipe = Recipe.create(title: 'le Pipoquê', 
+                          recipe_type: recipe_type,
+                          cuisine: cuisine,
+                          difficulty: 'Mui dificil',
+                          cook_time: 7,
+                          ingredients: 'miliú, oliu e sal',
+                          cook_method: 'misturre todo os ingredientes em fogo baixo até explodir tudo' )
 
+    visit root_path
+    click_on recipe.title
+    click_on 'Editar'
+
+    fill_in 'Ingredientes', with: ''
+    fill_in 'Como Preparar', with: ''
+    click_on 'Enviar'
+
+    expect(page).to have_content('Você deve informar todos os dados da receita')
+  end
 end
